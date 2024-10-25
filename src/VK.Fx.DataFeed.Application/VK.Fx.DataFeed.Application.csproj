@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+	  <EmarVersion Condition="'$(EmarVersion)'==null or '$(EmarVersion)'==''">2.0.2-preview.26</EmarVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BOA.Types.InternetBanking" Version="1.0.0" />
+    <PackageReference Include="BOA.Types.Kernel.BusinessHelper" Version="1.0.0" />
+    <PackageReference Include="BOA.Types.Kernel.Customer" Version="1.0.0" />
+    <PackageReference Include="BOA.Types.Kernel.General" Version="1.0.0" />
+    <PackageReference Include="VK.Emar.Application" Version="$(EmarVersion)" />
+    <PackageReference Include="VK.Emar.Caching.Redis" Version="2.0.1" />
+    <PackageReference Include="VK.Emar.Json.Newtonsoft" Version="2.0.1" />
+    <PackageReference Include="VK.Emar.Mapping.AutoMapper" Version="2.0.1" />
+    <PackageReference Include="VK.Emar.RabbitMQ" Version="2.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\VK.Fx.DataFeed.Application.Contract\VK.Fx.DataFeed.Application.Contract.csproj" />
+    <ProjectReference Include="..\VK.Fx.DataFeed.BoaProxy\VK.Fx.DataFeed.BoaProxy.csproj" />
+    <ProjectReference Include="..\VK.Fx.DataFeed.Domain.Shared\VK.Fx.DataFeed.Domain.Shared.csproj" />
+    <ProjectReference Include="..\VK.Fx.DataFeed.Domain\VK.Fx.DataFeed.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+   vkfxdatafeed:
+    image: ${DOCKER_REGISTRY-}vkfxdatafeed:${TAG-latest}
+    build:
+      context: .
+      dockerfile: src/VK.Fx.DataFeed.ApiHost/Dockerfile
+    ports:
+     - "44397:80"

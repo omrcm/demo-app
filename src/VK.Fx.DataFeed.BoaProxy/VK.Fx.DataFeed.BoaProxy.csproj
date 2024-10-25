@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BOA.Common.Types" Version="2.0.2-preview.26" />
+    <PackageReference Include="BOA.Types.InternetBanking" Version="1.0.0" />
+    <PackageReference Include="BOA.Types.InternetBanking.FX" Version="1.0.0" />
+    <PackageReference Include="BOA.Types.Kernel.BusinessHelper" Version="1.0.0" />
+    <PackageReference Include="BOA.Types.Kernel.FX" Version="1.0.0" />
+    <PackageReference Include="BOA.Types.Kernel.General" Version="1.0.0" />
+    <PackageReference Include="VK.Emar.Boa.Client" Version="2.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\VK.Fx.DataFeed.Domain.Shared\VK.Fx.DataFeed.Domain.Shared.csproj" />
+  </ItemGroup>
+
+</Project>

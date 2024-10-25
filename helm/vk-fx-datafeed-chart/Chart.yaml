@@ -1,0 +1,9 @@
+apiVersion: v2
+name: vk-fx-datafeed
+description: "A Helm chart for vk-fx-datafeed"
+type: application
+version: 0.0.0
+dependencies:
+  - name: microservice-chart
+    version: "~0.0.11"
+    repository: "@helm-repo"

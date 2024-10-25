@@ -1,0 +1,35 @@
+name: $(major).$(minor).$(patch).$(Rev:r)
+pool:
+  name: LinuxBuildNode
+trigger:
+  branches:
+    include:
+      - dev
+      - test
+      - release
+      - master
+resources:
+  repositories:
+    - repository: templates
+      type: git
+      name: JenkinsFile/MicroServicesJF
+      ref: azure
+extends:
+  template: /azure/MultiImgJF.yaml@templates
+  parameters:
+    appName:
+      - key: 'vk-fx-datafeed'
+    sonarConnection: 'sonar-connection-4'
+    NUGET_SOURCE: vk-ms-emar
+    SEM_VER:
+      - key: major
+        value: 1
+      - key: minor
+        value: 1
+      - key: patch
+        value: 1
+      - key: buildNumber
+        value: $(rev:.r)
+    BRANCH_NAME: $[replace(variables['Build.SourceBranch'], 'refs/heads/', '')]
+    sonarqube:
+      - path: VK.Fx.DataFeed.ApiHost

@@ -1,0 +1,40 @@
+microservice-chart:
+  image:
+    repository: quay.vakifkatilim.local/dev/vkfxdatafeed
+    tag: 
+
+  route:
+    enabled: true
+    host: vk-fx-datafeed-dev-vk-fx.apps.ocpdev.vakifkatilim.local
+    targetPort: http
+    tls:
+      enabled: false
+      termination: "edge"
+      insecureEdgeTerminationPolicy: "None"
+
+  autoscaling:
+    enabled: false
+    minReplicas: 1
+    maxReplicas: 1
+    targetCPUUtilizationPercentage: 80
+    targetMemoryUtilizationPercentage: 80
+
+  persistence:
+    enabled: false
+    existingClaim: "nfs-dev-store"
+    mountPath: "/data"
+
+  probe:
+    enabled: true
+
+  conjur:
+    enabled: true
+    CONJUR_AUTHN_LOGIN: host/dev_vk-fx-online-host
+
+  envVar:
+    configmap:
+      ASPNETCORE_ENVIRONMENT: Development
+      Emar__Boa__Environment: Development
+      Emar__Boa__BOAServiceUrl: net.tcp://10.1.136.22/BOA.WCFService/BOAService.svc
+    secret:
+      key1: value1

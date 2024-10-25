@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>f973bd53-bd75-42b2-8194-289c4b4815ca</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+	<EmarVersion Condition="'$(EmarVersion)'==null or '$(EmarVersion)'==''">2.0.2-preview.26</EmarVersion>
+	<EnableUnsafeBinaryFormatterSerialization>true</EnableUnsafeBinaryFormatterSerialization>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Remove="C:\Users\tp.eterzi\.nuget\packages\vk.emar.aspnetcore.mvc\2.0.0\contentFiles\any\net5.0\VK\Emar\AspNetCore\Mvc\Resources\en-US\SharedResources.json" />
+    <Content Remove="C:\Users\tp.eterzi\.nuget\packages\vk.emar.aspnetcore.mvc\2.0.0\contentFiles\any\net5.0\VK\Emar\AspNetCore\Mvc\Resources\tr-TR\SharedResources.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BOA.Types.Kernel.BusinessHelper" Version="1.0.0" />
+    <PackageReference Include="BOA.Types.Kernel.Customer" Version="1.0.0" />
+    <PackageReference Include="BOA.Types.Kernel.General" Version="1.0.0" />
+    <PackageReference Include="VK.Emar.AspnetCore.Authentication.IdentityServer" Version="2.0.1" />
+    <PackageReference Include="VK.Emar.AspNetCore.Docs" Version="$(EmarVersion)" />
+    <PackageReference Include="VK.Emar.AspNetCore.HealthChecks" Version="$(EmarVersion)" />
+    <PackageReference Include="VK.Emar.AspNetCore.Logging" Version="$(EmarVersion)" />
+    <PackageReference Include="VK.Emar.AspNetCore.Mvc" Version="$(EmarVersion)" />
+    <PackageReference Include="VK.Emar.BackgroundWorkers" Version="2.0.1" />
+    <PackageReference Include="VK.Emar.DistributedLock.Redis" Version="2.0.2" />
+    <PackageReference Include="VK.Emar.HealthChecks.RabbitMQ" Version="2.0.1" />
+    <PackageReference Include="VK.Emar.HealthChecks.Redis" Version="2.0.1" />
+    <PackageReference Include="VK.Emar.HealthChecks.SqlServer" Version="$(EmarVersion)" />
+    <PackageReference Include="VK.Emar.Json.Newtonsoft" Version="2.0.1" />
+    <PackageReference Include="VK.Emar.Mapping.AutoMapper" Version="2.0.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VK.Fx.DataFeed.Application\VK.Fx.DataFeed.Application.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,60 @@
+microservice-chart:
+
+  restartPolicy: Always
+
+  service:
+    type: ClusterIP
+    port: 6164
+    targetPort: http
+    containerPort: 8080
+
+  probe:
+    enabled: true
+    readinessProbe:
+      httpGet:
+        path: /health
+      initialDelaySeconds: 5
+      periodSeconds: 20
+    livenessProbe:
+      httpGet:
+        path: /health
+      initialDelaySeconds: 10
+      timeoutSeconds: 10
+      periodSeconds: 30    
+    
+  autoscaling:
+    enabled: false
+    minReplicas: 1
+    maxReplicas: 100
+    targetCPUUtilizationPercentage: 80
+    targetMemoryUtilizationPercentage: 80
+
+  route:
+    enabled: false
+    targetPort: "80"
+    tls:
+      enabled: false
+      termination: "edge"
+      insecureEdgeTerminationPolicy: "None"
+
+  secret:
+    enabled: true
+
+  resources:
+    limits:
+      cpu: 300m
+      memory: 700Mi
+    requests:
+      cpu: 150m
+      memory: 400Mi
+
+  envVar:
+    configmap:
+      #APPDYNAMICS_AGENT_TIER_NAME: vk-emar-swiftgate
+      #ServiceInfo__name: vk.web.base
+      #ServiceLog__serilog__consoleEnabled: true
+      #MetricOptions__UsePrometheus: false
+      ASPNETCORE_URLS: http://+:8080  
+      Emar__RabbitMQ__Connections__Default__HostName: rabbit-infra.fx-emar-ops.svc.cluster.local
+      Emar__RabbitMQ__Connections__Default__Port: 5672
+    secret:
